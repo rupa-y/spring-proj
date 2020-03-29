@@ -1,5 +1,5 @@
 pipeline {
-    agent 'worker1'
+    agent {node { label 'worker1'} }
     tools {
         jdk 'jdk8'
         maven  'm3'

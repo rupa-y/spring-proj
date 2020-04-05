@@ -15,16 +15,16 @@ pipeline {
                 }
             }
         }
+        stage('Compile'){
+            steps {
+                sh 'mvn compile'
+            }
+        }
         stage('sonar analysis'){
             steps {
                 withsonarqubeenv('sonar65'){
                 sh 'mvn sonar:sonar'
                 }
-            }
-        }
-        stage('Compile'){
-            steps {
-                sh 'mvn compile'
             }
         }
         stage('Test'){

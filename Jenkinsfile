@@ -15,17 +15,17 @@ pipeline {
                 }
             }
         }
-        stage('Compile'){
-            steps {
-                sh 'mvn compile'
-            }
-        }
         stage('sonar analysis'){
             steps {
                 sh 'mvn sonar:sonar   \
                -Dsonar.host.url=http://172.31.29.226:9000 \
                -Dsonar.login=b50a8b46cd5383381c27451f7d885e6d7178e57c'
                   }
+        }
+        stage('Compile'){
+            steps {
+                sh 'mvn compile'
+            }
         }
         stage('Test'){
             steps {

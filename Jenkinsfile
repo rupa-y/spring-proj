@@ -17,10 +17,10 @@ pipeline {
         }
         stage('sonar analysis'){
             steps {
-                sh 'mvn sonar:sonar   \
-               -Dsonar.host.url=http://172.31.29.226:9000 \
-               -Dsonar.login=b50a8b46cd5383381c27451f7d885e6d7178e57c'
-                  }
+                withsonarqubeenv('sonar65'){
+                sh 'mvn sonar:sonar'
+                }
+            }
         }
         stage('Compile'){
             steps {

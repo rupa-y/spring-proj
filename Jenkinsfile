@@ -20,10 +20,11 @@ pipeline {
                 sh 'mvn compile'
             }
         }
-        stage('spnar analysis'){
+        stage('sonar analysis'){
             steps {
-                withSonarQubeEnv(credentialsId: 'sonar', installationName: 'sonar')
-                sh 'mvn sonar:sonar'
+                sh 'mvn sonar:sonar   \
+               -Dsonar.host.url=http://172.31.29.226:9000 \
+               -Dsonar.login=b50a8b46cd5383381c27451f7d885e6d7178e57c'
                   }
         }
         stage('Test'){

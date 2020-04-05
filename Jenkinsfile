@@ -20,6 +20,12 @@ pipeline {
                 sh 'mvn compile'
             }
         }
+        stage('spnar analysis'){
+            steps {
+                withSonarQubeEnv(credentialsId: 'sonar', installationName: 'sonar')
+                sh 'mvn sonar:sonar'
+                  }
+        }
         stage('Test'){
             steps {
                 sh 'mvn test'
